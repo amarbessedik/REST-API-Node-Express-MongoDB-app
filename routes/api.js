@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Worker = require('../models/worker')
 
 //Handle HTTP requests
 
@@ -11,11 +12,12 @@ router.get('/workers', (req, res) => {
 });
 
 router.post('/workers', (req, res) => {
-    const response = req.body;
-    res.send({
-        message: response,
-        status: 'Sent back from server!'
-    })
+    // var worker = new Worker(req.body);
+    // worker.save();
+    //in a similar way, we can create a worker record using create
+    Worker.create(req.body).then((worker)=>{
+        res.send(worker);
+    });
 });
 
 router.put('/workers/:id', (req, res) => {
