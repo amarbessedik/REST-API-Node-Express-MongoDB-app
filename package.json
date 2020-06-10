@@ -1,7 +1,7 @@
 {
   "name": "REST-API-Node-Express-MongoDB-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full Stack App with REST-API, NodeJS, ExpressJS, MongoDB & ReactJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/amarbessedik/REST-API-Node-Express-MongoDB-app/issues"
   },
-  "homepage": "https://github.com/amarbessedik/REST-API-Node-Express-MongoDB-app#readme"
+  "homepage": "https://github.com/amarbessedik/REST-API-Node-Express-MongoDB-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
