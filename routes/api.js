@@ -22,15 +22,17 @@ router.post('/workers', (req, res, next) => {
 });
 
 router.put('/workers/:id', (req, res, next) => {
-    res.send({
-        message: 'You sent a PUT request'
-    })
+    Worker.findByIdAndUpdate({_id: req.params.id}, req.body).then(()=>{
+        Worker.findOne({_id: req.params.id}).then((worker)=>{
+            res.send({status: 'Record updated', data: worker});
+        });
+    });
 });
 
 router.delete('/workers/:id', (req, res, next) => {
-    res.send({
-        message: 'You sent a DELETE request'
-    })
+   Worker.findByIdAndRemove({ _id: req.params.id }).then((worker) => {
+     res.send({ msg: "Record deleted", data: worker });
+   }).catch(next);
 });
 
 module.exports = router;
