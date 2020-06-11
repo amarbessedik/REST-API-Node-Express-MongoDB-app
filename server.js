@@ -12,6 +12,7 @@ try {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
+      useCreateIndex: true
     });
 } catch (error) {
     console.log(error.message);

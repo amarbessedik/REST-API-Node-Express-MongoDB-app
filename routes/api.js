@@ -6,8 +6,25 @@ const Worker = require("../models/worker");
 
 //get a list of workers from the database
 router.get("/workers", (req, res, next) => {
-  res.send({
-    message: "You sent a GET request",
+  /*To find all records we the code bellow:
+  Worker.find({}).then((workers)=>{
+      res.send(workers);
+  });*/
+  //We want to get workers based on their geolocation
+  Worker.aggregate([
+    {
+      $geoNear: {
+        near: {
+          type: "Point",
+          coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
+        },
+        spherical: true,
+        maxDistance: 100000,
+        distanceField: "dist.calculated",
+      },
+    },
+  ]).then((results) => {
+    res.send(results);
   });
 });
 
