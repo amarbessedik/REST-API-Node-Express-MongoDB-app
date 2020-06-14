@@ -12,7 +12,7 @@ const GeoLocationSchema = new Schema({
         index: "2dsphere"
     }
 });
-
+  
 //create worker Schema & model
 const WorkerSchema = new Schema({
     name: {

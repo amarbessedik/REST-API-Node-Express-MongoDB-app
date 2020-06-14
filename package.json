@@ -2,7 +2,7 @@
   "name": "REST-API-Node-Express-MongoDB-app",
   "version": "1.0.0",
   "description": "Full Stack App with REST-API, NodeJS, ExpressJS, MongoDB & ReactJS",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +23,8 @@
     "mongoose": "^5.9.18"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@babel/preset-env": "^7.10.2",
+    "nodemon": "^2.0.4",
+    "standard": "^14.3.4"
   }
 }

@@ -19,6 +19,9 @@ try {
 }
 mongoose.Promise = global.Promise;
 
+//middleware #0: static assets
+app.use(express.static('public'));
+
 //use body-parser middleware (1st middleware)
 app.use(bodyParser.json());
 
