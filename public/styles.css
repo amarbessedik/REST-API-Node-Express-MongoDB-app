@@ -1,7 +1,11 @@
+:root{
+  --main-color: rgb(5, 148, 148);
+}
+
 body {
   font-family: Raleway;
   color: #555;
-  background: #ff5252;
+  background: #362a35;
   margin: 10px 30px;
 }
 #homepage {
@@ -36,7 +40,7 @@ form {
   margin: 30px auto;
 }
 input[type="submit"] {
-  background: #555;
+  background: var(--main-color);
   color: #fff;
   border: 0;
   padding: 10px;
@@ -50,38 +54,48 @@ input[type="submit"] {
 ul {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 li {
   padding: 15px 0;
   background: #eee;
-  list-style-type: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin: 10px 0;
   border-radius: 4px;
 }
+
 span {
   display: inline-block;
-  margin: 0 20px;
+  margin: 0 10px;
 }
+
+.font-awesome:before {
+   font-family: "Font Awesome 5 Free";
+   content: "\f3c5";
+   display: inline-block;
+   padding-right: 3px;
+   vertical-align: middle;
+   font-weight: 900;
+   color: var(--main-color);
+}
+
 span.dist {
-  color: green;
+  color: var(--main-color);
   float: right;
 }
 span.true {
   border-radius: 10px;
   width: 10px;
   height: 10px;
-  background: green;
 }
 span.false {
   border-radius: 10px;
   width: 10px;
   height: 10px;
-  background: #ff5252;
+  background: var(--main-color);
 }
 button {
-  background: green;
   border: 0;
   padding: 5px 10px;
   color: #fff;

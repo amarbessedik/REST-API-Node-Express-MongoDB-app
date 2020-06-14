@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const Worker = require("../models/worker");
+const Bank = require("../models/bank");
 
 //Handle HTTP requests
 
-//get a list of workers from the database
-router.get("/workers", (req, res, next) => {
+//get a list of banks from the database
+router.get("/banks", (req, res, next) => {
   /*To find all records we the code bellow:
-  Worker.find({}).then((workers)=>{
-      res.send(workers);
+  Bank.find({}).then((banks)=>{
+      res.send(banks);
   });*/
-  //We want to get workers based on their geolocation
-  Worker.aggregate([
+  //We want to get banks based on their geolocation
+  Bank.aggregate([
     {
       $geoNear: {
         near: {
@@ -25,36 +25,36 @@ router.get("/workers", (req, res, next) => {
     },
   ]).then((results) => {
     res.send(results);
-  });
+  }).catch(next);
 });
 
-router.post("/workers", (req, res, next) => {
-  // var worker = new Worker(req.body);
-  // worker.save();
-  // in a similar way, we can create & save a worker record using the create method
-  Worker.create(req.body)
-    .then((worker) => {
-      res.send(worker);
+router.post("/banks", (req, res, next) => {
+  // var Bank = new Bank(req.body);
+  // Bank.save();
+  // in a similar way, we can create & save a Bank record using the create method
+  Bank.create(req.body)
+    .then((Bank) => {
+      res.send(Bank);
       //if error, fire next middleware
     })
     .catch(next);
 });
 
-router.put("/workers/:id", (req, res, next) => {
-  Worker.findByIdAndUpdate(
+router.put("/banks/:id", (req, res, next) => {
+  Bank.findByIdAndUpdate(
     { _id: req.params.id, useFindAndModify: false },
     req.body
   ).then(() => {
-    Worker.findOne({ _id: req.params.id }).then((worker) => {
-      res.send({ status: "Record updated", data: worker });
+    Bank.findOne({ _id: req.params.id }).then((Bank) => {
+      res.send({ status: "Record updated", data: Bank });
     });
-  });
+  }).catch(next);
 });
 
-router.delete("/workers/:id", (req, res, next) => {
-  Worker.findByIdAndRemove({ _id: req.params.id, useFindAndModify: false })
-    .then((worker) => {
-      res.send({ msg: "Record deleted", data: worker });
+router.delete("/banks/:id", (req, res, next) => {
+  Bank.findByIdAndRemove({ _id: req.params.id, useFindAndModify: false })
+    .then((Bank) => {
+      res.send({ msg: "Record deleted", data: Bank });
     })
     .catch(next);
 });

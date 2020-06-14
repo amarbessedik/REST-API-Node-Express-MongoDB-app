@@ -8,7 +8,7 @@ const app = express();
 
 //connect to the database (mongoDB)
 try {
-    mongoose.connect("mongodb://localhost:27017/parteners", {
+    mongoose.connect("mongodb://localhost:27017/banks", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,

@@ -1,6 +1,6 @@
-class ReactComponentForResults extends React.Component {
+class BankLocator extends React.Component {
   state = {
-    workers: [],
+    banks: [],
     lat: 0,
     lng: 0,
   };
@@ -10,19 +10,19 @@ class ReactComponentForResults extends React.Component {
     let lng = this.state.lng;
     let lat = this.state.lat;
 
-    fetch("/api/workers?lng=" + lng + "&lat=" + lat)
-      .then((workers) => {
-        return workers.json();
+    fetch("/api/banks?lng=" + lng + "&lat=" + lat)
+      .then((banks) => {
+        return banks.json();
       })
       .then((data) => {
         console.log("json response: ", data);
-        this.setState({ workers: data });
+        this.setState({ banks: data });
       });
   };
 
   render() {
     return (
-      <div id="workers-container">
+      <div id="container">
         <form id="search" onSubmit={this.handleSubmit}>
           <label htmlFor="latitude">Enter your latitude</label>
           <input
@@ -46,20 +46,20 @@ class ReactComponentForResults extends React.Component {
             placeholder="Latitude"
             required
           />
-          <input type="submit" value="Find Workers" />
+          <input type="submit" value="Find banks" />
         </form>
 
         <ul>
-          {this.state.workers &&
-            this.state.workers.map((worker, index) => {
+          {this.state.banks &&
+            this.state.banks.map((bank, index) => {
               return (
                 <li key={index}>
-                  <span className={worker.available}></span>
-                  <span className="name">{worker.name}</span>
-                  <span className="rank">{worker.rank}</span>
+                  <span className="font-awesome"></span>
+                  <span className={bank.available}></span>
+                  <span className="name">{bank.name}</span>
+                  <span className="rank">{bank.rank}</span>
                   <span className="dist">
-                    {Math.floor(parseInt(worker.dist.calculated) / 1609.34)}{" "}
-                    miles away
+                    {Math.floor(parseInt(bank.dist.calculated) / 1609.34)} miles
                   </span>
                 </li>
               );
@@ -69,4 +69,7 @@ class ReactComponentForResults extends React.Component {
     );
   }
 }
-ReactDOM.render(<ReactComponentForResults />, document.getElementById("workers"));
+ReactDOM.render(
+  <BankLocator />,
+  document.getElementById("banks")
+);

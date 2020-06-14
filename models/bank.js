@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//create a GeoLocationSchema to add to WorkerSchema
+//create a GeoLocationSchema to add to BankSchema
 const GeoLocationSchema = new Schema({
     type:{
         type: String,
@@ -13,8 +13,8 @@ const GeoLocationSchema = new Schema({
     }
 });
   
-//create worker Schema & model
-const WorkerSchema = new Schema({
+//create bank Schema & model
+const BankSchema = new Schema({
     name: {
         type: String,
         required:[true, 'Name field required']
@@ -29,7 +29,7 @@ const WorkerSchema = new Schema({
     geometry: GeoLocationSchema
 });
 
-//MongoDB will pluralize the name of the collection: worker => workers
-const Worker = mongoose.model('worker', WorkerSchema);
+//MongoDB will pluralize the name of the collection: bank => banks
+const bank = mongoose.model('bank', BankSchema);
 
-module.exports = Worker;
+module.exports = bank;
